@@ -12,6 +12,9 @@ import { useSelector } from "../../redux/hooks";
 import { Spin, Row, Col, Divider, Typography, Anchor, Menu } from "antd";
 import { DetailRightImage } from "../detailRightImage";
 import { DetailSize } from "../detailSize/DetailSize";
+import {DetailQa} from "../../components/detailQa/DetailQa"
+import {DetailReview} from "../../components/detailReview/DetailReview"
+import { RootState } from "../../redux/store";
 interface MatchParams {
   goodsId: string;
 }
@@ -24,6 +27,11 @@ export const SmDetailPage: React.FC<RouteComponentProps<MatchParams>> = (
   const loading = useSelector((state) => state.detailNewBeeMall.loading);
   const error = useSelector((state) => state.detailNewBeeMall.error);
   const product = useSelector((state) => state.detailNewBeeMall.data.data);
+  const detailSizeData = useSelector((state:RootState) => state.detailSizeSlice.data);
+  const detailQaData = useSelector((state:RootState) => state.detailQaSlice.data);
+  const detailReviewData = useSelector((state:RootState) => state.detailReviewSlice.data);
+  console.log("cccccccc",detailSizeData );
+  
 
   const dispatch = useDispatch();
   useEffect(() => {
@@ -57,15 +65,20 @@ export const SmDetailPage: React.FC<RouteComponentProps<MatchParams>> = (
         <Nav></Nav>
         <DetailCommodity></DetailCommodity>
         <div className="intro mt20 w clearfix">
-          <div className="left fl" style={{position: 'relative'}}>
-             <DetailLeftImage data={product}></DetailLeftImage>
-          </div>
-             <DetailRightImage></DetailRightImage>
-        </div>
-        <div id="sizeQAContainer">
-	            <div id="innerSizeQAContainer">
-                  <DetailSize></DetailSize>
-              </div>
+            <div className="left fl" style={{position: 'relative'}}>
+              <DetailLeftImage data={product}></DetailLeftImage>
+            </div>
+               <DetailRightImage></DetailRightImage>
+       
+            <div id="sizeQAContainer">
+	               <div id="innerSizeQAContainer">
+                  <DetailSize data={detailSizeData}></DetailSize>
+                  <section className="g-grid_item g-sm-block-sm">
+                    <DetailQa data={detailQaData}></DetailQa>
+                    <DetailReview data={detailReviewData}></DetailReview>
+                  </section>
+                 </div>
+           </div>
         </div>
       </div>
       <NewBeeFooter></NewBeeFooter>

@@ -17,7 +17,9 @@ import fetchHotGoodsesReducer from "./shoppingMall/fetchHotGoodsesReducer";
 import fetchNewAndRecommendGoodsesReducer from"./shoppingMall/fetchNewAndRecommendGoodsesReducer";
 import { newBeeMallDetailSlice } from "./detailNewBeeMall/fetchDetailLeftImageActions";
 import{fetchDetailLeftImageSlice} from "../components/detailLeftImage/fetchDetailLeftImageSlice"
-
+import{DetailSizeSlice} from "./detailSizeSlice/fetchDetailSizeSlice"
+import{DetailQaSlice} from "./detailQaSlice/fetchDetailQaSlice"
+import{DetailReviewSlice} from "./detailReviewSlice/fetchDetailReviewSlice"
 const persistConfig = {
   key: "root",
   storage,
@@ -38,6 +40,9 @@ const rootReducer = combineReducers({
     newAndRecommendGoodses:fetchNewAndRecommendGoodsesReducer,
     detailNewBeeMall: newBeeMallDetailSlice.reducer,
     detailLeftImage: fetchDetailLeftImageSlice.reducer,
+    detailSizeSlice: DetailSizeSlice.reducer,
+    detailQaSlice: DetailQaSlice.reducer,
+    detailReviewSlice: DetailReviewSlice.reducer,
 
     //recommendGoodses:fetchNewAndRecommendGoodsesReducer,
 })

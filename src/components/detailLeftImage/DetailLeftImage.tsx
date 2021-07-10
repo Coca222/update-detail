@@ -2,8 +2,10 @@ import React from "react";
 import "../smDetailPage/SmDetailPage.css";
 import "./DetailLeftImage.css";
 import { RootState } from "../../redux/store";
-import { useSelector, useDispatch } from 'react-redux'
-import { decrement, increment } from './fetchDetailLeftImageSlice'
+import { useDispatch } from 'react-redux'
+import { useSelector } from "../../redux/hooks";
+import { decrement, increment, clickImage } from './fetchDetailLeftImageSlice'
+
 
 interface ifProps {
   goodsId: number;
@@ -15,6 +17,7 @@ interface pIf {
 }
 
 export const DetailLeftImage: React.FC<pIf> = ({ data }) => {
+  const length = useSelector((state:RootState) => state.detailNewBeeMall.data.data.length);
   const count = useSelector((state: RootState) => state.detailLeftImage.currentIndex)
   const dispatch = useDispatch()
   const currentImage=data.filter((num,index)=> index===count)[0] as ifProps
@@ -47,7 +50,7 @@ export const DetailLeftImage: React.FC<pIf> = ({ data }) => {
       </div> */}
                   
       <div className="row">
-        <button className="next" onClick={() => dispatch(decrement())}>❮</button>
+        <button className="next" onClick={() => dispatch(decrement(length))}>❮</button>
         {data.map((pic, idp) => {
           return (
             <div className="column" key={idp}>
@@ -57,12 +60,13 @@ export const DetailLeftImage: React.FC<pIf> = ({ data }) => {
                 src={`http://localhost:8081${pic.path}`}
                 style={{ width: "100%" }}
                 alt="The Woods"
+                onClick={() => dispatch(clickImage(idp))}
               />
                               
             </div>
           );
         })}
-         <button className="prev" onClick={() => dispatch(increment())}>❯</button>             
+         <button className="prev" onClick={() => dispatch(increment(length))}>❯</button>             
       </div>
               
     </div>

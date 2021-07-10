@@ -1,8 +1,44 @@
-import React from "react";
+import React ,{ useEffect } from "react";
 import "../smDetailPage/SmDetailPage.css";
+import {  useDispatch } from "react-redux";
+import{fetchDetailSizeSlice } from "../../redux/detailSizeSlice/fetchDetailSizeSlice"
+import {  useParams } from "react-router-dom";
 
-export const DetailSize: React.FC = ( ) => {
-    return (
+interface ifProps {
+    
+   goodsId: number,
+     color: String,
+     size: String,
+     material:String,
+     weight:String,
+     warrantyYear:String,
+     setDate:String,
+     warpSize:String,
+            }
+  
+  interface pIf {
+    data: ifProps[];
+  }
+
+  interface MatchParams {
+    goodsId: string;
+  }
+  
+export const DetailSize: React.FC<pIf> = ( {data}) => {
+   
+    console.log("aaaaaaaaaa",data);
+    const { goodsId } = useParams<MatchParams>();
+    const dispatch = useDispatch()
+    useEffect(() => {
+        //console.log("in shoppngMall.tsx file ");
+        dispatch(fetchDetailSizeSlice (goodsId));
+      }, []);
+
+      
+   
+    return data === null ? (
+        <h2>loading</h2>
+      ) : (
             <section className="g-block-sm p-spec" id="js-product-spec">
                 <h2 className="g-h-2 g-h-i p-hd"><i className="g-s g-s-size" aria-hidden="true"></i><span>仕様・サイズ</span></h2>
                 <div id="p-specMore" aria-hidden="false" data-accordion-more="">
@@ -12,35 +48,35 @@ export const DetailSize: React.FC = ( ) => {
                         <tbody>
                             <tr>
                                 <th>商品コード</th>
-                                <td>10700</td>
+                                <td>{data[0].goodsId}</td>
                             </tr>
                             <tr>
                                 <th>カラー</th>
-                                <td>black</td>
+                                <td>{data[0].color}</td>
                             </tr>
                             <tr>
                                 <th>サイズ</th>
-                                <td>幅78.1×奥行7.4×長さ160.8mm</td>
+                                <td>{data[0].size}</td>
                             </tr>
                             <tr>
                                 <th>素材</th>
-                                <td>其他</td>
+                                <td>{data[0].material}</td>
                             </tr>
                             <tr>
                                 <th>重量</th>
-                                <td>226g</td>
+                                <td>{data[0].weight}</td>
                             </tr>
                             <tr>
                                 <th>保証年数</th>
-                                <td>3年</td>
+                                <td>{data[0].warrantyYear}</td>
                             </tr>
                             <tr>
                                 <th>組立時間</th>
-                                <td>15分</td>
+                                <td>{data[0].setDate}</td>
                             </tr>
                             <tr>
                                 <th>梱包サイズ</th>
-                                <td>幅100×奥行10×高さ188cm</td>
+                                <td>{data[0].warpSize}</td>
                             </tr>
                             {/* hidden="hidden" */}
                             <tr>

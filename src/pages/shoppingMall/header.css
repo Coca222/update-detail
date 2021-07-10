@@ -345,10 +345,20 @@ a.slgnext{
     vertical-align: top;
     border-bottom: 1px solid #dbdbdb;
 }
-/* section#js-product-spec {
-    margin: 10px auto;
-    width: 1229px;
+
+/* .g-table-a{
+    display: table;
+    border-collapse: separate;
+    box-sizing: border-box;
+    text-indent: initial;
+    border-spacing: 2px; 
+    border-color: grey;
 } */
+
+ .section#js-product-spec {
+     margin-top: 20px auto;
+    /* width: 1229px;  */
+} 
 div#p-specMore {
     width: 500px;
     /* margin: auto; */

@@ -18,7 +18,7 @@ export const DetailRightImage: React.FC = ( ) => {
 		<div className="order">
       {/* onClick="saveAndGoCart(10700)" */}
 			<input className="car" type="button"  value="立即选购"/>
-      {/* onClick="saveToCart(10700)"  */}
+      {/* onClick="saveToCart(10700)"  */}	
 			<input className="car" type="button"value="加入购物车"/>
 		</div>
 		<div className="tb-extra ml20" id="J_tbExtra">
@@ -31,9 +31,9 @@ export const DetailRightImage: React.FC = ( ) => {
 			<dl>
 				<dt>支付</dt>
 				<dd>
-          <a href="##" target="_blank"><img src="/mall/image/hua.png"/> 蚂蚁花呗 </a>
-          <a href="##" target="_blank"><img src="/mall/image/card.png"/> 信用卡支付 </a>
-          <a href="##" target="_blank"><img src="/mall/image/ji.png"/> 集分宝</a>
+          <a href="##" target="_blank"><img src="/mall/image/hua.png" alt=""/> 蚂蚁花呗 </a>
+          <a href="##" target="_blank"><img src="/mall/image/card.png" alt=""/> 信用卡支付 </a>
+          <a href="##" target="_blank"><img src="/mall/image/ji.png" alt=""/> 集分宝</a>
         </dd>
 			</dl>
 			<dl>

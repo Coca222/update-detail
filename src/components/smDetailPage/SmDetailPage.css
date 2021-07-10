@@ -1343,6 +1343,10 @@ img {
     cursor:pointer;
     color:#009e96;
 }
+/* add by coca */
+.previousPage{
+    pointer-events: none;
+}
 .hiddenList{
     display: none;
 }
@@ -1534,8 +1538,9 @@ img {
 
 #detail .intro .right {
     width: 620px;
-    background: #f8f8f8;
+    background: #ebebeb;
     padding-bottom: 50px;
+    height: 880px;
 }
 
 #detail .intro .right .sub_title {

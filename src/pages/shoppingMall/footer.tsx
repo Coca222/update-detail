@@ -2,6 +2,7 @@ import React from "react";
 
 import "./ShoppingMall.css";
 import "./header.css";
+import "../../components/smDetailPage/SmDetailPage.css";
 
 export const NewBeeFooter: React.FC = () => {
   return (
