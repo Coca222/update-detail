@@ -26,7 +26,7 @@ interface ifProps {
   
 export const DetailSize: React.FC<pIf> = ( {data}) => {
    
-    console.log("aaaaaaaaaa",data);
+    
     const { goodsId } = useParams<MatchParams>();
     const dispatch = useDispatch()
     useEffect(() => {

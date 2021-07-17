@@ -1344,9 +1344,9 @@ img {
     color:#009e96;
 }
 /* add by coca */
-.previousPage{
+/* .previousPage{
     pointer-events: none;
-}
+} */
 .hiddenList{
     display: none;
 }
@@ -1669,3 +1669,9 @@ img {
     margin-top: 2px;
 }
  
+._hidden{
+    display: none;
+}
+.unhidden{
+        display:block;
+} 

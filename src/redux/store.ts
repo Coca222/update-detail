@@ -20,6 +20,13 @@ import{fetchDetailLeftImageSlice} from "../components/detailLeftImage/fetchDetai
 import{DetailSizeSlice} from "./detailSizeSlice/fetchDetailSizeSlice"
 import{DetailQaSlice} from "./detailQaSlice/fetchDetailQaSlice"
 import{DetailReviewSlice} from "./detailReviewSlice/fetchDetailReviewSlice"
+import{DetailQaPagingSlice} from "./detailQaPagingSlice/fetchDetailQaPagingSlice"
+import{fetchDetailQApagingSlice} from "../components/detailQa/fetchDetailQApagingSlice"
+import{DetailReviewMoreSlice} from "./detailReviewSliceCopy/fetchDetailReviewSlice"
+import{DetailQaQuestionSlice} from "./detailQaQuestion/detailQaQuestionSlice"
+import{DetailReviewHelpNumSlice} from "./detailReviewAddHelpNum/detailReviewAddHelpNumSlice"
+
+
 const persistConfig = {
   key: "root",
   storage,
@@ -43,6 +50,11 @@ const rootReducer = combineReducers({
     detailSizeSlice: DetailSizeSlice.reducer,
     detailQaSlice: DetailQaSlice.reducer,
     detailReviewSlice: DetailReviewSlice.reducer,
+    detailQaPagingSlice: DetailQaPagingSlice.reducer,
+    detailQa:fetchDetailQApagingSlice.reducer,
+    detailReviewSliceCopy: DetailReviewMoreSlice.reducer,
+    detailQaQuestionSlice:DetailQaQuestionSlice.reducer,
+    detailReviewAddHelpNumSlice:DetailReviewHelpNumSlice.reducer,
 
     //recommendGoodses:fetchNewAndRecommendGoodsesReducer,
 })

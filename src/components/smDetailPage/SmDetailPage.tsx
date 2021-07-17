@@ -28,9 +28,13 @@ export const SmDetailPage: React.FC<RouteComponentProps<MatchParams>> = (
   const error = useSelector((state) => state.detailNewBeeMall.error);
   const product = useSelector((state) => state.detailNewBeeMall.data.data);
   const detailSizeData = useSelector((state:RootState) => state.detailSizeSlice.data);
-  const detailQaData = useSelector((state:RootState) => state.detailQaSlice.data);
-  const detailReviewData = useSelector((state:RootState) => state.detailReviewSlice.data);
-  console.log("cccccccc",detailSizeData );
+ // const detailQaData = useSelector((state:RootState) => state.detailQaSlice.data);
+  const detailQaPagingData = useSelector((state:RootState) => state.detailQaPagingSlice.data.list);
+ // const detailReviewData = useSelector((state:RootState) => state.detailReviewSlice.data);
+  const initialList = useSelector((state:RootState) => state.detailReviewSliceCopy.initialList);
+ // const reviewMoreList = useSelector((state:RootState) => state.detailReviewSliceCopy.reviewMoreList);
+ // const reviewList=initialList||reviewMoreList;
+  
   
 
   const dispatch = useDispatch();
@@ -74,8 +78,8 @@ export const SmDetailPage: React.FC<RouteComponentProps<MatchParams>> = (
 	               <div id="innerSizeQAContainer">
                   <DetailSize data={detailSizeData}></DetailSize>
                   <section className="g-grid_item g-sm-block-sm">
-                    <DetailQa data={detailQaData}></DetailQa>
-                    <DetailReview data={detailReviewData}></DetailReview>
+                    <DetailQa data={detailQaPagingData}></DetailQa>
+                    <DetailReview data={initialList}></DetailReview>
                   </section>
                  </div>
            </div>
