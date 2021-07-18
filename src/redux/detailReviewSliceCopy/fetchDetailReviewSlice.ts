@@ -24,8 +24,15 @@ const initialState: DetailReviewMoreState = {
 export const fetchDetailReviewMoreSlice = createAsyncThunk(
   "detailReviewSliceCopy/fetchDetailReviewMoreSlice ",
   async (goodsReviewVO: any, thunkAPI) => {
+    debugger;
+    console.log("ZZZZZZZZZZZZZ",goodsReviewVO)
+    
     const { data } = await axios.post(
-      `http://localhost:8081/detailReviewMore`,goodsReviewVO
+      `http://localhost:8081/detailReviewMore`,goodsReviewVO,{
+        headers: {
+            'Content-Type': 'application/json',
+        }
+    }
     );
     return data;
   }
@@ -46,13 +53,14 @@ export const DetailReviewMoreSlice = createSlice({
       state.loading = true;
     },
     [fetchDetailReviewMoreSlice.fulfilled.type]: (state, action) => {  
-     // debugger;
-        if(state.initialList != undefined && state.initialList.length===0 ){
+      debugger;
+    // state.initialList != undefined && state.initialList.length===0 
+        if(action.payload.data.isInitial){
             
             state.initialList = action.payload.data.list;  
             console.log("YYYYYYYYYYY", state.initialList) 
         }else{
-            state.reviewMoreList = action.payload.data;  
+            state.reviewMoreList = action.payload.data.list;  
             console.log("ZZZZZZZZZ", state.reviewMoreList) 
         }
      // state.initialList = action.payload.data.list;

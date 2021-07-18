@@ -1,6 +1,6 @@
 import { createSlice, PayloadAction, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
-
+import{fetchDetailReviewMoreSlice} from "../../redux/detailReviewSliceCopy/fetchDetailReviewSlice"
 interface DetailReviewAddHelpNumState {
   loading: boolean;
   error: string | null;
@@ -8,6 +8,12 @@ interface DetailReviewAddHelpNumState {
  // qaRecord:{question:any,goodsId:number}
  
  
+}
+
+interface GoodsReviewHelpNum {
+  goodsId:string;
+  ids?:number[];
+  reviewId:number;
 }
 
 const initialState: DetailReviewAddHelpNumState = {
@@ -21,10 +27,20 @@ const initialState: DetailReviewAddHelpNumState = {
 
 export const fetchDetailReviewAddHelpNumSlice = createAsyncThunk(
   "detailReviewAddHelpNumSlice/fetchDetailReviewAddHelpNumSlice ",
-  async (goodsReviewHelpNum: any, thunkAPI) => {
+  async (goodsReviewHelpNum: GoodsReviewHelpNum, thunkAPI) => {
+    debugger;
     const { data } = await axios.post(
-      `http://localhost:8081/qaInsert`,goodsReviewHelpNum
+      `http://localhost:8081/helpNum`,{reviewId:goodsReviewHelpNum.reviewId},{
+        headers: {
+            'Content-Type': 'application/json',
+        }
+    }
     );
+    console.log(goodsReviewHelpNum.reviewId);
+    debugger;
+    if(data!=null){
+      thunkAPI.dispatch(fetchDetailReviewMoreSlice({ids:goodsReviewHelpNum.ids,goodsId:goodsReviewHelpNum.goodsId}));
+    }
     return data;
   }
 );

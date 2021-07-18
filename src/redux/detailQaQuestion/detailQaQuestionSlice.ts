@@ -26,10 +26,10 @@ export const fetchDetailQaQuestionSlice = createAsyncThunk(
     const { data } = await axios.post(
       `http://localhost:8081/qaInsert`,qaRecord
     );
-    debugger;
+    //debugger;
  
     if(data!=null){
-      thunkAPI.dispatch(fetchDetailQaPagingSlice(1));
+      thunkAPI.dispatch(fetchDetailQaPagingSlice(-1));
     }
     return data;
   }
@@ -42,7 +42,7 @@ export const DetailQaQuestionSlice = createSlice({
   },
   extraReducers: {
     [fetchDetailQaQuestionSlice.pending.type]: (state) => {
-      debugger;
+     // debugger;
       // return { ...state, loading: true };
       state.loading = true;
     },
