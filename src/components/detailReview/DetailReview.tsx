@@ -73,15 +73,6 @@ export const DetailReview: React.FC<pIf> = () => {
         fetchDetailReviewAddHelpNumSlice({ reviewId, goodsId, ids })
       );
     }
-    //     if (initialList.map((item) => item.id === reviewId)) {
-    //         //2  true false
-    //       dispatch(
-    //         fetchDetailReviewAddHelpNumSlice({ reviewId, goodsId, ids: [] })
-    //       );
-    //     } else {
-    //       dispatch(fetchDetailReviewAddHelpNumSlice({ reviewId, goodsId, ids:ids }));
-    //     }
-    //     //  dispatch(fetchDetailReviewMoreSlice({goodsId}));
   };
   const showMoreReviewBtn = () => {
     //console.log("BBBBBBBBBBBBB",ids);

@@ -25,6 +25,9 @@ import{fetchDetailQApagingSlice} from "../components/detailQa/fetchDetailQApagin
 import{DetailReviewMoreSlice} from "./detailReviewSliceCopy/fetchDetailReviewSlice"
 import{DetailQaQuestionSlice} from "./detailQaQuestion/detailQaQuestionSlice"
 import{DetailReviewHelpNumSlice} from "./detailReviewAddHelpNum/detailReviewAddHelpNumSlice"
+import{DetailTitleSlice} from "./detailTitle/fetchDetailTitleSlice"
+import{DetailGenreSlice} from "./detailGenreSlice/fetchDetailGenreSlice"
+import{DetailSubGenreSlice} from "./detailSubGenre/fetchDetailSubGenreSlice"
 
 
 const persistConfig = {
@@ -55,6 +58,9 @@ const rootReducer = combineReducers({
     detailReviewSliceCopy: DetailReviewMoreSlice.reducer,
     detailQaQuestionSlice:DetailQaQuestionSlice.reducer,
     detailReviewAddHelpNumSlice:DetailReviewHelpNumSlice.reducer,
+    detailTile: DetailTitleSlice.reducer,
+    detailGenre: DetailGenreSlice.reducer,
+    detailSubGenre: DetailSubGenreSlice.reducer,
 
     //recommendGoodses:fetchNewAndRecommendGoodsesReducer,
 })

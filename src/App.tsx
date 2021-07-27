@@ -16,6 +16,8 @@ import { Redirect } from "react-router-dom";
 import { useSelector } from "./redux/hooks";
 import { useDispatch } from "react-redux";
 import { getShoppingCart } from "./redux/shoppingCart/slice";
+import { Tabelog } from "./pages/tabelog/Tabelog";
+
 
 const PrivateRoute = ({ component, isAuthenticated, ...rest }) => {
   const routeComponent = (props) => {
@@ -49,6 +51,7 @@ function App() {
           <Route path="/search/:keywords?" component={SearchPage} />
           <Route path="/shoppingMall" component={ShoppingMall} />
           <Route path="/smDetailPage/:goodsId" component={SmDetailPage} />
+          <Route path="/tabelog/:id" component={Tabelog} />
           <PrivateRoute
             isAuthenticated={jwt !== null}
             path="/shoppingCart"
