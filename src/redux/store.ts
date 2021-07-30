@@ -28,6 +28,11 @@ import{DetailReviewHelpNumSlice} from "./detailReviewAddHelpNum/detailReviewAddH
 import{DetailTitleSlice} from "./detailTitle/fetchDetailTitleSlice"
 import{DetailGenreSlice} from "./detailGenreSlice/fetchDetailGenreSlice"
 import{DetailSubGenreSlice} from "./detailSubGenre/fetchDetailSubGenreSlice"
+import{fetchDetailTop2Slice} from "../components/detailTop2/detailTop2Slice"
+import{DetailTopSlice} from "./topSlice/fetchTopSlice"
+import{tops2Slice} from "./top2Slice/fetchTop2Slice"
+import{DetailTop4Slice} from "./top4Slice/fetchTop4Slice"
+import{DetailTop5Slice} from "./top5Slice/fetchTop5Slice"
 
 
 const persistConfig = {
@@ -61,6 +66,11 @@ const rootReducer = combineReducers({
     detailTile: DetailTitleSlice.reducer,
     detailGenre: DetailGenreSlice.reducer,
     detailSubGenre: DetailSubGenreSlice.reducer,
+    detailTop2: fetchDetailTop2Slice.reducer,
+    detailTops2: tops2Slice.reducer,
+    detailTop: DetailTopSlice.reducer,
+    topKodawari: DetailTop4Slice.reducer,
+    topHygiene: DetailTop5Slice.reducer
 
     //recommendGoodses:fetchNewAndRecommendGoodsesReducer,
 })

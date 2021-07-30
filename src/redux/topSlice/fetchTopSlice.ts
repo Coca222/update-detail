@@ -1,50 +1,50 @@
 import { createSlice, PayloadAction, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 
-interface DetailSubGenreState{
+interface DetailTopState{
 loading: boolean;
 error: string | null;
 data: any;
 
 }
 
-const initialState:DetailSubGenreState= {
+const initialState:DetailTopState= {
 loading: true,
 error: null,
 data: null,
 
 };
- interface JointabelogCategory {
+ interface TopPage {
      id:any
  }
- export const fetchDetailSubGenreSlice = createAsyncThunk(
-     "detailSubGenre/fetchDetailSubGenreSlice",
-    async (jointabelogCategory:JointabelogCategory, thunkAPI) => {
+ export const fetchDetailTopSlice = createAsyncThunk(
+     "detailTop/fetchDetailTopSlice ",
+    async (topPage:TopPage, thunkAPI) => {
     debugger;
 
       const { data } = await axios.post(
-        `http://localhost:8081/joinTabelogCategory`,{id:jointabelogCategory.id}
+        `http://localhost:8081/topPage`,{id:topPage.id}
       );
       return data;
     }
  );
- export const DetailSubGenreSlice = createSlice({
-    name: "detailSubGenre",
+ export const DetailTopSlice = createSlice({
+    name: "detailTop",
     initialState,
     reducers: {
       
     },
     extraReducers: {
-      [fetchDetailSubGenreSlice.pending.type]: (state) => {
+      [fetchDetailTopSlice.pending.type]: (state) => {
         // return { ...state, loading: true };
         state.loading = true;
       },
-      [fetchDetailSubGenreSlice.fulfilled.type]: (state, action) => {
-        state.data= action.payload.data;
+      [fetchDetailTopSlice.fulfilled.type]: (state, action) => {
+        state.data= action.payload.data[0];
         state.loading = false;
         state.error = null;
       },
-      [fetchDetailSubGenreSlice.rejected.type]: (state, action: PayloadAction<string | null>) => {
+      [fetchDetailTopSlice.rejected.type]: (state, action: PayloadAction<string | null>) => {
         //   const ddd = action.payload;
         state.loading = false;
         state.error = action.payload;

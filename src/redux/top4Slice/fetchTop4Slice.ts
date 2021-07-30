@@ -1,50 +1,50 @@
 import { createSlice, PayloadAction, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 
-interface DetailSubGenreState{
+interface DetailTop4State{
 loading: boolean;
 error: string | null;
 data: any;
 
 }
 
-const initialState:DetailSubGenreState= {
+const initialState:DetailTop4State= {
 loading: true,
 error: null,
 data: null,
 
 };
- interface JointabelogCategory {
+ interface TopKodawari {
      id:any
  }
- export const fetchDetailSubGenreSlice = createAsyncThunk(
-     "detailSubGenre/fetchDetailSubGenreSlice",
-    async (jointabelogCategory:JointabelogCategory, thunkAPI) => {
+ export const fetchDetailTop4Slice = createAsyncThunk(
+     "topKodawari/fetchDetailTop4Slice ",
+    async (topKodawari:TopKodawari, thunkAPI) => {
     debugger;
 
       const { data } = await axios.post(
-        `http://localhost:8081/joinTabelogCategory`,{id:jointabelogCategory.id}
+        `http://localhost:8081/topKodawari`,{id:topKodawari.id}
       );
       return data;
     }
  );
- export const DetailSubGenreSlice = createSlice({
-    name: "detailSubGenre",
+ export const DetailTop4Slice = createSlice({
+    name: "topKodawari",
     initialState,
     reducers: {
       
     },
     extraReducers: {
-      [fetchDetailSubGenreSlice.pending.type]: (state) => {
+      [fetchDetailTop4Slice.pending.type]: (state) => {
         // return { ...state, loading: true };
         state.loading = true;
       },
-      [fetchDetailSubGenreSlice.fulfilled.type]: (state, action) => {
+      [fetchDetailTop4Slice.fulfilled.type]: (state, action) => {
         state.data= action.payload.data;
         state.loading = false;
         state.error = null;
       },
-      [fetchDetailSubGenreSlice.rejected.type]: (state, action: PayloadAction<string | null>) => {
+      [fetchDetailTop4Slice.rejected.type]: (state, action: PayloadAction<string | null>) => {
         //   const ddd = action.payload;
         state.loading = false;
         state.error = action.payload;
